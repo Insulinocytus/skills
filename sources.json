@@ -17,28 +17,19 @@
   },
   {
     "repository": "remotion-dev/skills",
-    "skill": [
-      "remotion-best-practices"
-    ]
+    "skill": ["remotion-best-practices"]
   },
   {
     "repository": "upstash/context7",
-    "skill": [
-      "find-docs"
-    ]
+    "skill": ["find-docs"]
   },
   {
     "repository": "anthropics/skills",
-    "skill": [
-      "frontend-design",
-      "slack-gif-creator"
-    ]
+    "skill": ["frontend-design", "slack-gif-creator"]
   },
   {
     "repository": "vercel-labs/skills",
-    "skill": [
-      "find-skills"
-    ]
+    "skill": ["find-skills"]
   },
   {
     "repository": "openai/skills",
@@ -51,14 +42,10 @@
   },
   {
     "repository": "google-labs-code/stitch-skills",
-    "skill": [
-      "*"
-    ]
+    "skill": ["*"]
   },
   {
     "repository": "antvis/Infographic",
-    "skill": [
-      "*"
-    ]
+    "skill": ["*"]
   }
 ]
