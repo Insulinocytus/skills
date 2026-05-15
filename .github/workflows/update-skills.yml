@@ -27,27 +27,32 @@ jobs:
 
       - name: Update sources
         run: |
-          jq -c '.sources[]' sources.json | while read -r item; do
+          jq -c '.[]' sources.json | while read -r item; do
             package="$(jq -r '.package' <<< "$item")"
-            skill="$(jq -r '.skill' <<< "$item")"
-            target="$(jq -r '.target // "skills/\(.skill)"' <<< "$item")"
+            args=()
 
-            echo "Updating $skill"
+            while read -r skill; do
+              args+=(--skill "$skill")
+            done < <(jq -r '.skill[]' <<< "$item")
 
-            npx -y skills add "$package" --skill "$skill" --agent opencode --copy -y
+            echo "Updating $package"
 
-            rm -rf "$target"
-            mkdir -p "$(dirname "$target")"
-            cp -a ".agents/skills/$skill" "$target"
-            rm -rf ".agents/skills/$skill"
+            npx -y skills add "$package" "${args[@]}" --agent opencode --copy -y
 
-            git add -A "$target"
+            while read -r skill; do
+              rm -rf "skills/$skill"
+              mkdir -p skills
+              cp -a ".agents/skills/$skill" "skills/$skill"
+              rm -rf ".agents/skills/$skill"
 
-            if git diff --cached --quiet -- "$target"; then
-              echo "No changes for $skill"
-            else
-              git commit -m "update $skill"
-            fi
+              git add -A "skills/$skill"
+
+              if git diff --cached --quiet -- "skills/$skill"; then
+                echo "No changes for $skill"
+              else
+                git commit -m "update $skill"
+              fi
+            done < <(jq -r '.skill[]' <<< "$item")
           done
 
       - name: Push changes
