@@ -52,24 +52,13 @@
   {
     "repository": "google-labs-code/stitch-skills",
     "skill": [
-      "design-md",
-      "enhance-prompt",
-      "react:components",
-      "remotion",
-      "shadcn-ui",
-      "stitch-design",
-      "stitch-loop",
-      "taste-design"
+      "*"
     ]
   },
   {
     "repository": "antvis/Infographic",
     "skill": [
-      "infographic-creator",
-      "infographic-item-creator",
-      "infographic-structure-creator",
-      "infographic-syntax-creator",
-      "infographic-template-updater"
+      "*"
     ]
   }
 ]
