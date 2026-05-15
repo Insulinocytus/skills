@@ -11,14 +11,14 @@ Add an entry to `sources.json`:
 ```json
 [
   {
-    "package": "owner1/repo1",
+    "repository": "owner1/repo1",
     "skill": [
       "foobar1",
       "foobar2"
     ]
   },
   {
-    "package": "owner2/repo2",
+    "repository": "owner2/repo2",
     "skill": [
       "foobar3",
       "foobar4"
@@ -29,7 +29,7 @@ Add an entry to `sources.json`:
 
 Fields:
 
-- `package`: package or repository passed to `npx skills add`, for example `owner/repo` or a GitHub URL
+- `repository`: repository passed to `npx skills add`, for example `owner/repo` or a GitHub URL
 - `skill`: skill names passed to `--skill`
 
 ## Updates

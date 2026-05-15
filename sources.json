@@ -1,6 +1,6 @@
 [
   {
-    "package": "github/awesome-copilot",
+    "repository": "github/awesome-copilot",
     "skill": [
       "git-commit",
       "create-github-pull-request-from-specification",
@@ -16,32 +16,32 @@
     ]
   },
   {
-    "package": "remotion-dev/skills",
+    "repository": "remotion-dev/skills",
     "skill": [
       "remotion-best-practices"
     ]
   },
   {
-    "package": "upstash/context7",
+    "repository": "upstash/context7",
     "skill": [
       "find-docs"
     ]
   },
   {
-    "package": "anthropics/skills",
+    "repository": "anthropics/skills",
     "skill": [
       "frontend-design",
       "slack-gif-creator"
     ]
   },
   {
-    "package": "vercel-labs/skills",
+    "repository": "vercel-labs/skills",
     "skill": [
       "find-skills"
     ]
   },
   {
-    "package": "openai/skills",
+    "repository": "openai/skills",
     "skill": [
       "pdf",
       "security-best-practices",
@@ -50,7 +50,7 @@
     ]
   },
   {
-    "package": "google-labs-code/stitch-skills",
+    "repository": "google-labs-code/stitch-skills",
     "skill": [
       "design-md",
       "enhance-prompt",
@@ -63,7 +63,7 @@
     ]
   },
   {
-    "package": "antvis/Infographic",
+    "repository": "antvis/Infographic",
     "skill": [
       "infographic-creator",
       "infographic-item-creator",

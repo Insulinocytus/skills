@@ -36,7 +36,7 @@ jobs:
           mapfile -t sources < <(jq -c '.[]' sources.json)
 
           for item in "${sources[@]}"; do
-            package="$(jq -r '.package' <<< "$item")"
+            repository="$(jq -r '.repository' <<< "$item")"
             args=()
             mapfile -t skills < <(jq -r '.skill[]' <<< "$item")
 
@@ -44,19 +44,19 @@ jobs:
               args+=(--skill "$skill")
             done
 
-            echo "Updating $package"
+            echo "Updating $repository"
 
-            npx -y skills add "$package" "${args[@]}" --agent opencode --copy -y </dev/null
+            npx -y skills add "$repository" "${args[@]}" --agent opencode --copy -y </dev/null
 
             if [ ! -d .agents/skills ]; then
-              echo "No installed skills found for $package"
+              echo "No installed skills found for $repository"
               continue
             fi
 
             mapfile -t installed_skills < <(find .agents/skills -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort)
 
             if [ "${#installed_skills[@]}" -eq 0 ]; then
-              echo "No installed skills found for $package"
+              echo "No installed skills found for $repository"
               continue
             fi
 
