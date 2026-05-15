@@ -5,7 +5,14 @@
       "git-commit",
       "create-github-pull-request-from-specification",
       "create-agentsmd",
-      "create-readme"
+      "create-readme",
+      "refactor",
+      "documentation-writer",
+      "multi-stage-dockerfile",
+      "prompt-builder",
+      "excalidraw-diagram-generator",
+      "postgresql-optimization",
+      "sql-optimization"
     ]
   },
   {
@@ -18,6 +25,13 @@
     "package": "upstash/context7",
     "skill": [
       "find-docs"
+    ]
+  },
+  {
+    "package": "anthropics/skills",
+    "skill": [
+      "frontend-design",
+      "slack-gif-creator"
     ]
   },
   {
