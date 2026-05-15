@@ -33,19 +33,22 @@ jobs:
 
       - name: Update sources
         run: |
-          jq -c '.[]' sources.json | while read -r item; do
+          mapfile -t sources < <(jq -c '.[]' sources.json)
+
+          for item in "${sources[@]}"; do
             package="$(jq -r '.package' <<< "$item")"
             args=()
+            mapfile -t skills < <(jq -r '.skill[]' <<< "$item")
 
-            while read -r skill; do
+            for skill in "${skills[@]}"; do
               args+=(--skill "$skill")
-            done < <(jq -r '.skill[]' <<< "$item")
+            done
 
             echo "Updating $package"
 
-            npx -y skills add "$package" "${args[@]}" --agent opencode --copy -y
+            npx -y skills add "$package" "${args[@]}" --agent opencode --copy -y </dev/null
 
-            while read -r skill; do
+            for skill in "${skills[@]}"; do
               rm -rf "skills/$skill"
               mkdir -p skills
               cp -a ".agents/skills/$skill" "skills/$skill"
@@ -58,7 +61,7 @@ jobs:
               else
                 git commit -m "update $skill"
               fi
-            done < <(jq -r '.skill[]' <<< "$item")
+            done
           done
 
       - name: Push changes
