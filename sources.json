@@ -3,13 +3,22 @@
     "package": "github/awesome-copilot",
     "skill": [
       "git-commit",
-      "create-github-pull-request-from-specification"
+      "create-github-pull-request-from-specification",
+      "gh-cli",
+      "create-agentsmd",
+      "create-readme"
     ]
   },
   {
     "package": "remotion-dev/skills",
     "skill": [
       "remotion-best-practices"
+    ]
+  },
+  {
+    "package": "vercel-labs/skills",
+    "skill": [
+      "find-skills"
     ]
   }
 ]
