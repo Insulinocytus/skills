@@ -2,6 +2,12 @@ name: Update skills
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - sources.json
+      - .github/workflows/update-skills.yml
   schedule:
     - cron: "0 0 * * 0"
 

@@ -34,6 +34,7 @@ Fields:
 
 ## Updates
 
-`.github/workflows/update-skills.yml` runs weekly and can also be triggered manually from GitHub Actions.
+`.github/workflows/update-skills.yml` runs weekly, can be triggered manually from GitHub Actions, and also runs on pushes to
+`main` that change `sources.json` or the workflow file itself.
 
 For each source, the workflow runs `npx skills add`, copies `.agents/skills/<skill>` to `skills/<skill>`, removes `.agents/skills/<skill>`, commits changed skills, and pushes the result.
