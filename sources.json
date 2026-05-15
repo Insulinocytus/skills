@@ -16,6 +16,12 @@
     ]
   },
   {
+    "package": "upstash/context7",
+    "skill": [
+      "find-docs"
+    ]
+  },
+  {
     "package": "vercel-labs/skills",
     "skill": [
       "find-skills"
