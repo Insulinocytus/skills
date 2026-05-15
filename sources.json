@@ -39,5 +39,37 @@
     "skill": [
       "find-skills"
     ]
+  },
+  {
+    "package": "openai/skills",
+    "skill": [
+      "pdf",
+      "security-best-practices",
+      "skill-creator",
+      "cloudflare-deploy"
+    ]
+  },
+  {
+    "package": "google-labs-code/stitch-skills",
+    "skill": [
+      "design-md",
+      "enhance-prompt",
+      "react-components",
+      "remotion",
+      "shadcn-ui",
+      "stitch-design",
+      "stitch-loop",
+      "taste-design"
+    ]
+  },
+  {
+    "package": "antvis/Infographic",
+    "skill": [
+      "infographic-creator",
+      "infographic-item-creator",
+      "infographic-structure-creator",
+      "infographic-syntax-creator",
+      "infographic-template-updater"
+    ]
   }
 ]
