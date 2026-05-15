@@ -20,8 +20,7 @@ Add an entry to `sources.json`:
   {
     "repository": "owner2/repo2",
     "skill": [
-      "foobar3",
-      "foobar4"
+      "*"
     ]
   }
 ]
@@ -30,7 +29,7 @@ Add an entry to `sources.json`:
 Fields:
 
 - `repository`: repository passed to `npx skills add`, for example `owner/repo` or a GitHub URL
-- `skill`: skill names passed to `--skill`
+- `skill`: skill names passed to `--skill`; use `["*"]` to install all skills found in that repository
 
 ## Updates
 
