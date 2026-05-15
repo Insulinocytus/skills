@@ -4,7 +4,6 @@
     "skill": [
       "git-commit",
       "create-github-pull-request-from-specification",
-      "gh-cli",
       "create-agentsmd",
       "create-readme"
     ]
