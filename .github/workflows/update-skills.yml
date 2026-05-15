@@ -48,7 +48,19 @@ jobs:
 
             npx -y skills add "$package" "${args[@]}" --agent opencode --copy -y </dev/null
 
-            for skill in "${skills[@]}"; do
+            if [ ! -d .agents/skills ]; then
+              echo "No installed skills found for $package"
+              continue
+            fi
+
+            mapfile -t installed_skills < <(find .agents/skills -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort)
+
+            if [ "${#installed_skills[@]}" -eq 0 ]; then
+              echo "No installed skills found for $package"
+              continue
+            fi
+
+            for skill in "${installed_skills[@]}"; do
               rm -rf "skills/$skill"
               mkdir -p skills
               cp -a ".agents/skills/$skill" "skills/$skill"
