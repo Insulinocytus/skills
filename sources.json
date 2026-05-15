@@ -47,5 +47,18 @@
   {
     "repository": "antvis/Infographic",
     "skill": ["*"]
+  },
+  {
+    "repository": "addyosmani/agent-skills",
+    "skill": [
+      "api-and-interface-design",
+      "browser-testing-with-devtools",
+      "deprecation-and-migration",
+      "source-driven-development",
+      "doubt-driven-development",
+      "performance-optimization",
+      "ci-cd-and-automation",
+      "context-engineering"
+    ]
   }
 ]
