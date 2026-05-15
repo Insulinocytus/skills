@@ -1,0 +1,54 @@
+name: Update skills
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * 0"
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Install jq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
+
+      - name: Update sources
+        run: |
+          jq -c '.sources[]' sources.json | while read -r item; do
+            package="$(jq -r '.package' <<< "$item")"
+            skill="$(jq -r '.skill' <<< "$item")"
+            target="$(jq -r '.target // "skills/\(.skill)"' <<< "$item")"
+
+            echo "Updating $skill"
+
+            npx -y skills add "$package" --skill "$skill" --agent opencode --copy -y
+
+            rm -rf "$target"
+            mkdir -p "$(dirname "$target")"
+            cp -a ".agents/skills/$skill" "$target"
+            rm -rf ".agents/skills/$skill"
+
+            git add -A "$target"
+
+            if git diff --cached --quiet -- "$target"; then
+              echo "No changes for $skill"
+            else
+              git commit -m "update $skill"
+            fi
+          done
+
+      - name: Push changes
+        run: git push
