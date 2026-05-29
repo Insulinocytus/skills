@@ -33,7 +33,7 @@ async function validateComponent(filePath) {
     const walk = (node) => {
       if (!node) return;
       if (node.type === 'TsInterfaceDeclaration' && node.id.value.endsWith('Props')) hasInterface = true;
-      if (node.type === 'JSXAttribute' && node.name.name === 'className') {
+      if (node.type === 'JSXAttribute' && (node.name?.value === 'className' || node.name?.name === 'className')) {
         if (node.value?.value && HEX_COLOR_REGEX.test(node.value.value)) tailwindIssues.push(node.value.value);
       }
       for (const key in node) { if (node[key] && typeof node[key] === 'object') walk(node[key]); }
