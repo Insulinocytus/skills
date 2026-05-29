@@ -56,5 +56,9 @@
       "context-engineering",
       "code-review-and-quality"
     ]
+  },
+  {
+    "repository": "tanweai/pua",
+    "skill": ["pua"]
   }
 ]
