@@ -33,12 +33,7 @@
   },
   {
     "repository": "openai/skills",
-    "skill": [
-      "pdf",
-      "security-best-practices",
-      "skill-creator",
-      "cloudflare-deploy"
-    ]
+    "skill": ["pdf", "security-best-practices", "cloudflare-deploy"]
   },
   {
     "repository": "google-labs-code/stitch-skills",
