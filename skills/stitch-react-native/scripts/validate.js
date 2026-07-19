@@ -35,7 +35,12 @@ async function validateComponent(filePath) {
     console.log("Scanning AST...");
 
     const walk = (node, parent) => {
-      if (!node) return;
+      if (!node || typeof node !== 'object') return;
+      if (Array.isArray(node)) {
+        for (const item of node) walk(item, parent);
+        return;
+      }
+      if (typeof node.type !== 'string') return;
 
       if (node.type === 'TsInterfaceDeclaration' && node.id.value.endsWith('Props')) {
         hasInterface = true;
@@ -63,6 +68,7 @@ async function validateComponent(filePath) {
       }
 
       for (const key in node) {
+        if (key === 'span') continue;
         if (node[key] && typeof node[key] === 'object') walk(node[key], node);
       }
     };
