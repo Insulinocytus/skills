@@ -1,6 +1,7 @@
 ---
 name: remotion-render
-description: Best practices for rendering videos
+description: Export a Remotion video
+version: 4.0.503
 metadata:
   tags: remotion, render
 ---

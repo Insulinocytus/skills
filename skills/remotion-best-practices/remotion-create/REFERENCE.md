@@ -1,6 +1,7 @@
 ---
 name: remotion-create
-description: Creating a new Remotion video
+description: Create a new Remotion video
+version: 4.0.503
 metadata:
   tags: remotion
 ---
@@ -25,7 +26,12 @@ Replace `my-video` with a suitable project name.
 
 ## Designing a video
 
-Keep the scaffold and add React Markup. Follow [Remotion React Markup Best Practices](../remotion-markup/REFERENCE.md) and [Video Layout Rules](video-layout.md) for video-first layout and text sizing guidance.
+Keep the scaffold and add React Markup.
+Follow [Remotion React Markup Best Practices](../remotion-markup/REFERENCE.md) and [Video Layout Rules](video-layout.md) for video-first layout and text sizing guidance.
+
+## Is this a multi-scene video?
+
+If this is a video with multiple subsequence videos, follow guidance at [Multi-scene videos](../remotion-markup/multi-scene-video.md).
 
 ## Interactivity Best Practices
 
@@ -37,11 +43,16 @@ If Tailwind is requested, see [tailwind.md](tailwind.md) for using TailwindCSS i
 
 ## Starting preview
 
+Instead of rendering the video, consider starting the preview server for faster iteration:
+
 ```bash
 npx remotion studio --no-open
 ```
 
-This will start a long-running process and print the server URL for the preview.
+This will start a long-running process and print the server URL for the preview.  
+If server is already started, it will print the URL.
+If an in-harness browser is available, open it there.
+You can visit a specific composition by navigating to `/[composition-id]`, for example `http://localhost:3000/MapAnimation`.
 
 ## Follow-up
 
