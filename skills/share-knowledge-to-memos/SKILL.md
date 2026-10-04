@@ -22,7 +22,7 @@ The source is the current conversation. Any prompt the user adds after invoking 
 
    Done when every surviving point has a conclusion, 条件, and 依据, and a reader with zero session context understands it.
 3. **Group.** Bundle points into **topic memos**: one subject a reader would search for as a unit (a model, a tool, a failure mode). A point joins the topic it is *about*; a topic with a single thin point folds into its nearest neighbour.
-4. **Dedupe.** Fetch every memo matching `"知识" in tags` (follow `nextPageToken` to the end). For each topic, find any memo on the same subject. When one exists, the draft becomes that memo's merged full content: its points kept, new points added, contradicted points replaced and flagged.
+4. **Dedupe.** Fetch every accessible memo without a tag filter (follow `nextPageToken` to the end). For each topic, find any memo on the same subject. When one exists, the draft becomes that memo's merged full content: its points kept, new points added, contradicted points replaced and flagged.
 5. **Review.** Show each topic draft in chat with full memo content, marked 新建 or 更新 `<memo name>`. Wait for the user to pick and edit. Done when the user names what to write.
 6. **Write.** Per approved topic, exactly one call: `memo_update_memo` (`updateMask: "content"`) for 更新, `memo_create_memo` with `visibility: PRIVATE` for 新建. A failed call is reported and left; the rest proceed.
 7. **Report** the memo names created and updated, and any failures.
@@ -31,7 +31,7 @@ The source is the current conversation. Any prompt the user adds after invoking 
 
 ```
 # <主题标题>
-#知识 #AI-Generated #<tag> #<tag> ...
+#AI-Generated #<tag> #<tag> ...
 
 <一句话概括这个主题最重要的结论>
 
@@ -42,7 +42,7 @@ The source is the current conversation. Any prompt the user adds after invoking 
   - 依据：官方｜<URL> 或 实测｜<方法、样本量>
 ```
 
-- `#知识 #AI-Generated` lead every memo this skill writes, including updates of existing memos: `#AI-Generated` marks a memo as AI-written, apart from the user's own. Hyphenated, since Memos ends a tag at whitespace.
+- `#AI-Generated` leads every memo this skill writes, including updates of existing memos: it marks a memo as AI-written, apart from the user's own. Hyphenated, since Memos ends a tag at whitespace. Preserve existing tags when updating; `#知识` is not added automatically but may be chosen as a relevant topic tag.
 - Topic tags are the search surface, 4–8 per memo: tool and model names (`#PixelArtXL`, `#ComfyUI`), ecosystem (`#SDXL`, `#LoRA`), domain in Chinese (`#像素画`, `#AI绘画`), and the problem class (`#提示词`, `#显存`, `#故障`).
 - Body in Chinese; technical terms keep their original English.
 - Each bold conclusion stands alone: it is the answer, the sub-bullets are its warranty.
