@@ -1,6 +1,6 @@
 ---
 name: chezmoi-sync
-description: Sync chezmoi dotfiles both ways: capture local changes, pull remote ones, resolve conflicts, apply, push.
+description: "Sync chezmoi dotfiles both ways: capture local changes, pull remote ones, resolve conflicts, apply, push."
 disable-model-invocation: true
 ---
 
