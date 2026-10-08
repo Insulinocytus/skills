@@ -1,6 +1,7 @@
 ---
 name: distill-pr
-description: "Distill why a PR exists: problem, origin, approach, trade-offs, gaps. Use when reading a PR, or asked why a PR or change exists."
+description: "Distill why a PR exists: problem, origin, approach, trade-offs, gaps."
+disable-model-invocation: true
 ---
 
 Pull the signal out of a PR whose body and linked ticket are padded with AI-written prose. Prose restates; the diff and the humans carry the facts.
