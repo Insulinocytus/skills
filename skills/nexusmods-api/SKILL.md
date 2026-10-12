@@ -15,7 +15,7 @@ Every v1, v2 and v3 call sends the key as header `apikey: <key>` and a descripti
 
 ## Writes need confirmation
 
-Before any call that publishes or cannot be undone, list the exact request bodies and wait for the user's go-ahead: creating a file or file version, adding a changelog, editing the mod page, quarantining a version.
+Before any call that publishes or cannot be undone, list the exact request bodies, every optional field included with the value you will send or its default, and wait for the user's go-ahead: creating a file or file version, adding a changelog, editing the mod page, quarantining a version.
 
 ## IDs
 
@@ -56,7 +56,8 @@ Base URL `https://api.nexusmods.com/v3`. Most `mods`/`mod-files` endpoints carry
 
 - New version of an existing file (keeps the update chain mod managers follow): `POST /mod-files/{file_id}/versions`
   - Required: `upload_id`, `name`, `version`, `file_category` (`main` | `optional` | `miscellaneous`).
-  - Optional: `description`, `update_mod_version` (bump the mod page version, default false), `archive_existing_file` (move the previous version to Archived, default false), `primary_mod_manager_download`, `allow_mod_manager_download`, `show_requirements_pop_up`, `previous_version_id`.
+  - Optional: `description`, `update_mod_version` (bump the mod page version, default false), `archive_existing_file` (move the previous version to Archived, default false), `primary_mod_manager_download` (make this version the default download; send `true` when it replaces the main download), `allow_mod_manager_download`, `show_requirements_pop_up`, `previous_version_id`.
+  - The previous version drops from `main` to `old_version` but keeps `is_primary` unless the new version claims it. No v3 endpoint changes `is_primary` afterwards; fixing it takes the website's Manage files page.
   - → `{file{id, game_scoped_id, name, file_category}, version{id, position}}`.
 - Brand-new file beside the existing ones: `POST /mod-files` with the same fields plus required `mod_id` (v3 mod id), minus `archive_existing_file`/`previous_version_id`.
 - Changelog: `POST /mods/{id}/changelogs` `{version, changelog}` → 201. Append-only.
