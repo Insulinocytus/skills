@@ -1,6 +1,6 @@
 ---
 name: read-only
-description: Read-only mode: inspect and propose; writes only inside a session scratch directory.
+description: "Read-only mode: inspect and propose; writes only inside a session scratch directory."
 disable-model-invocation: true
 ---
 
